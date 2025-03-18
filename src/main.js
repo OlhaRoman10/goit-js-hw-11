@@ -32,11 +32,11 @@ form.addEventListener("submit", function (event) {
     showLoader();
     fetchImages(query)
         .then(images => {
-        if (images.length === 0) {
-            iziToast.error({ message: "Sorry, there are no images matching your search query. Please try again!", position: "topRight", });
-        } else {
-            renderGallery(images);
-        }    
-    })
-    .finally(() => hideLoader()); // Ховаємо loader після завершення запиту
+            if (images.length === 0) {
+                iziToast.error({ message: "Sorry, there are no images matching your search query. Please try again!", position: "topRight", });
+            } else {
+                renderGallery(images);
+            }
+        })
+    hideLoader();
 });
