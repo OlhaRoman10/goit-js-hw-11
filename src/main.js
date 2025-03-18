@@ -1,8 +1,12 @@
 import { fetchImages } from "./js/pixabay-api.js";
-import {renderGallery} from "./js/render-functions.js"
+import { renderGallery } from "./js/render-functions.js"
+
 import iziToast from "izitoast";
 // Додатковий імпорт стилів
 import "izitoast/dist/css/iziToast.min.css";
+
+
+
 
 
 const form = document.querySelector(".form");
@@ -19,7 +23,7 @@ form.addEventListener("submit", function (event) {
     fetchImages(query)
         .then(images => {
         if (images.length === 0) {
-            iziToast.error({ message: "Something went wrong. Please try again later." });
+            iziToast.error({ message: "Sorry, there are no images matching your search query. Please try again!" });
         } else {
             renderGallery(images);
         }    
