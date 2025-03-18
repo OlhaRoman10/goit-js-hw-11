@@ -37,12 +37,6 @@ form.addEventListener("submit", function (event) {
         } else {
             renderGallery(images);
         }    
-    }).catch(error => {
-      iziToast.error({
-        message: "Something went wrong. Please try again later!",
-        position: "topRight",
-      });
-      console.error("Error fetching images:", error);
     })
     .finally(() => hideLoader()); // Ховаємо loader після завершення запиту
 });
