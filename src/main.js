@@ -23,7 +23,7 @@ form.addEventListener("submit", function (event) {
     fetchImages(query)
         .then(images => {
         if (images.length === 0) {
-            iziToast.error({ message: "Sorry, there are no images matching your search query. Please try again!" });
+            iziToast.error({ message: "Sorry, there are no images matching your search query. Please try again!", position: "topRight", });
         } else {
             renderGallery(images);
         }    
