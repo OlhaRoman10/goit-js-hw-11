@@ -10,8 +10,17 @@ import "izitoast/dist/css/iziToast.min.css";
 
 
 const form = document.querySelector(".form");
-const input = form.querySelector("input[name='search-text']");
 
+const loader = document.querySelector(".loader");
+
+const input = form.querySelector("input[name='search-text']");
+function showLoader() {
+  loader.classList.remove("hidden");
+}
+
+function hideLoader() {
+  loader.classList.add("hidden");
+}
 
 form.addEventListener("submit", function (event) {
     event.preventDefault();
@@ -20,6 +29,7 @@ form.addEventListener("submit", function (event) {
         iziToast.error({ message: "Please enter a search query!" })
         return;
     }
+    showLoader();
     fetchImages(query)
         .then(images => {
         if (images.length === 0) {
@@ -27,6 +37,12 @@ form.addEventListener("submit", function (event) {
         } else {
             renderGallery(images);
         }    
-    });
-    });
-    
+    }).catch(error => {
+      iziToast.error({
+        message: "Something went wrong. Please try again later!",
+        position: "topRight",
+      });
+      console.error("Error fetching images:", error);
+    })
+    .finally(() => hideLoader()); // Ховаємо loader після завершення запиту
+});
