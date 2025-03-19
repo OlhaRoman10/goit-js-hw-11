@@ -5,7 +5,8 @@ import "simplelightbox/dist/simple-lightbox.min.css";
 export function renderGallery(images) {
     const gallery = document.querySelector(".gallery");
     
-    gallery.innerHTML = "";
+ 
+  
   gallery.innerHTML = images.map(image => `
     <li class="gallery-item">
       <a href="${image.largeImageURL}" class="gallery-link">
