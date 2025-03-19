@@ -10,6 +10,8 @@ const loader = document.querySelector(".loader");
 const input = form.querySelector("input[name='search-text']");
 const gallery = document.querySelector(".gallery");
 
+loader.classList.add("hidden");
+
 function showLoader() {
   loader.classList.remove("hidden");
 }
